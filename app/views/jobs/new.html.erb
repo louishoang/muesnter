@@ -1,0 +1,21 @@
+<h2> Add new job</h2>
+
+<%= form_for @job, html: {class: "nifty_form"} do |f| %>
+
+   <% if @job.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@job.errors.count, "error") %> prohibited
+      this question from being saved:</h2>
+    <ul>
+    <% @job.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <label>Tile: </label><%= f.text_field :title %><br>
+  <label>Description: </label><br><%= f.text_area :description, size: "60x12" %><br>
+  <label>Company Name: </label><%= f.collection_select(:company_id, Company.all, :id, :name) %>
+  <%= f.submit "Create" %>
+<% end %>

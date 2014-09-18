@@ -1,0 +1,21 @@
+<h2> Add new company</h2>
+
+<%= form_for @company, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+
+   <% if @company.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@company.errors.count, "error") %> prohibited
+      this question from being saved:</h2>
+    <ul>
+    <% @company.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <label>Name: </label><%= f.text_field :name %><br>
+  <label>Location: </label><%= f.text_field :location %><br>
+  <label>Description: </label><br><%= f.text_area :description, size: "60x12" %><br>
+  <%= f.submit "Create" %>
+<% end %>

@@ -1,0 +1,13 @@
+<h2><%= @company.name %></h2><br>
+<%= link_to "Edit", edit_company_path %><br>
+
+Location: <%= @company.location %></br>
+Description: <%= @company.description %>
+
+<h2> Now hiring for these positions: </h2>
+<ul>
+  <% @job_lists.each do |job| %>
+    <li><%= link_to job.title, job_path(job) %> </li>
+  <% end %>
+</ul>
+
